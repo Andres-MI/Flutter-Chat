@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 
 class ChatScreen extends StatefulWidget {
+
+  static const String screenId = 'ChatScreenId';
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -40,7 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: kMessageTextFieldDecoration,
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       //Implement send functionality.
                     },
