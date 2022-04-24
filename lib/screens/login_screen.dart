@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Image.asset('images/logo.png'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 48.0,
             ),
             TextField(
@@ -38,16 +38,16 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
             TextField(
               onChanged: (value) {
                 //Do something with the user input.
               },
-              decoration: kTextFieldDecoration,
+              decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password.'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24.0,
             ),
             RoundedButton(

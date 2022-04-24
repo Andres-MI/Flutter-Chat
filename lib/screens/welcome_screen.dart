@@ -74,7 +74,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 48.0,
             ),
             RoundedButton(buttonColor: Colors.lightBlueAccent,buttonText: 'Log In', onPressed: () {

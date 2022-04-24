@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
-const kSendButtonTextStyle = TextStyle(
+const kSendButtonTextStyle = const TextStyle(
   color: Colors.lightBlueAccent,
   fontWeight: FontWeight.bold,
   fontSize: 18.0,
 );
 
-const kMessageTextFieldDecoration = InputDecoration(
+const kMessageTextFieldDecoration = const InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   hintText: 'Type your message here...',
   border: InputBorder.none,
 );
 
-const kMessageContainerDecoration = BoxDecoration(
+const kMessageContainerDecoration = const BoxDecoration(
   border: Border(
     top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
   ),
 );
 
-const kTextFieldDecoration = InputDecoration(
-  hintText: 'Enter your password.',
+const kTextFieldDecoration = const InputDecoration(
+  hintText: '',
   hintStyle: TextStyle(color: Colors.grey),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
