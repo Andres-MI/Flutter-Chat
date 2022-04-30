@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash_chat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../components/rounded_button.dart';
@@ -11,6 +13,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
@@ -45,9 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               obscureText: true,
               onChanged: (value) {
-                //Do something with the user input.
+                password = value;
               },
-              decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password.'),
+              decoration: kTextFieldDecoration.copyWith(
+                  hintText: 'Enter your password.'),
             ),
             const SizedBox(
               height: 24.0,
@@ -55,8 +62,16 @@ class _LoginScreenState extends State<LoginScreen> {
             RoundedButton(
                 buttonColor: Colors.lightBlueAccent,
                 buttonText: 'Log In',
-                onPressed: () {
-                  //Implement Log in functionality
+                onPressed: () async {
+                  try {
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (user.user != null) {
+                      Navigator.pushNamed(context, ChatScreen.screenId);
+                    }
+                  } catch (e) {
+                    //Does not exist user
+                  }
                 }),
           ],
         ),
