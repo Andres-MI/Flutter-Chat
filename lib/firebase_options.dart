@@ -53,7 +53,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '834600155327',
     projectId: 'flash-chat-e0f64',
     storageBucket: 'flash-chat-e0f64.appspot.com',
-    iosClientId: '834600155327-qv3eoj2b5u5t2l61ejq2umqs6204mdb6.apps.googleusercontent.com',
+    iosClientId:
+        '834600155327-qv3eoj2b5u5t2l61ejq2umqs6204mdb6.apps.googleusercontent.com',
     iosBundleId: 'co.appbrewery.flashChat',
   );
 }

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../components/rounded_button.dart';
 
-
 class WelcomeScreen extends StatefulWidget {
   static const String screenId = 'WelcomeScreenId';
 
@@ -62,14 +61,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
                 AnimatedTextKit(
                   animatedTexts: [
-                    TypewriterAnimatedText(
-                      'Flash Chat',
-                      textStyle: TextStyle(
-                        fontSize: 45.0,
-                        fontWeight: FontWeight.w900,
-                      ),
-                      speed: Duration(milliseconds: 150)
-                    )
+                    TypewriterAnimatedText('Flash Chat',
+                        textStyle: TextStyle(
+                          fontSize: 45.0,
+                          fontWeight: FontWeight.w900,
+                        ),
+                        speed: Duration(milliseconds: 150))
                   ],
                 ),
               ],
@@ -77,12 +74,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             const SizedBox(
               height: 48.0,
             ),
-            RoundedButton(buttonColor: Colors.lightBlueAccent,buttonText: 'Log In', onPressed: () {
-              Navigator.pushNamed(context, LoginScreen.screenId);
-            },),
-            RoundedButton(buttonColor: Colors.blueAccent, buttonText: 'Register', onPressed: () {
-              Navigator.pushNamed(context, RegistrationScreen.screenId);
-            }),
+            RoundedButton(
+              buttonColor: Colors.lightBlueAccent,
+              buttonText: 'Log In',
+              onPressed: () {
+                Navigator.pushNamed(context, LoginScreen.screenId);
+              },
+            ),
+            RoundedButton(
+                buttonColor: Colors.blueAccent,
+                buttonText: 'Register',
+                onPressed: () {
+                  Navigator.pushNamed(context, RegistrationScreen.screenId);
+                }),
           ],
         ),
       ),
