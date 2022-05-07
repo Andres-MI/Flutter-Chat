@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/widgets/text_bubble.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: _firestore.collection('messages').snapshots(),
+        stream: _firestore.collection('messages').orderBy('timestamp').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(
@@ -19,17 +20,19 @@ class MessagesStream extends StatelessWidget {
               ),
             );
           }
-          final messages = snapshot.data?.docs;
+          final messages = snapshot.data?.docs.reversed;
           List<TextBubble> messageBubbles = [];
           for (var message in messages!) {
             final messageText = message['text'];
             final messageSender = message['sender'];
+            final currentUser = FirebaseAuth.instance.currentUser?.email;
             final messageBubble =
-                TextBubble(text: messageText, sender: messageSender);
+                TextBubble(text: messageText, sender: messageSender, isAuthor: currentUser == messageSender,);
             messageBubbles.add(messageBubble);
           }
           return Expanded(
             child: ListView(
+              reverse: true,
               padding:
                   const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
               children: messageBubbles,
